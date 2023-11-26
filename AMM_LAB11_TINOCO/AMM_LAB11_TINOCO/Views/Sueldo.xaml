@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AMM_LAB11_TINOCO.Views.Sueldo"
+             xmlns:local="clr-namespace:AMM_LAB11_TINOCO.ViewModels">
+    <ContentPage.BindingContext>
+        <local:SalaryViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <!-- Estilo para botones -->
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#DFEEE3" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="Keyboard" Value="Numeric" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <Frame BackgroundColor="#DFEEE3" Padding="24" CornerRadius="0">
+                <Label Text="Salary Calculator!" HorizontalTextAlignment="Center" TextColor="Black" FontSize="36"/>
+            </Frame>
+
+            <Grid Padding="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Salary -->
+                <Label Grid.Row="0" Grid.Column="0" Text="Salary" FontSize="Title" VerticalOptions="CenterAndExpand" />
+                <Entry Grid.Row="0" Grid.Column="1" FontSize="Title" Text="{Binding Salary}" Placeholder="Salary" />
+
+                <!-- Gratification-->
+                <Label Grid.Row="1" Grid.Column="0" Text="Gratification" FontSize="Title" VerticalOptions="CenterAndExpand" />
+                <Entry Grid.Row="1" Grid.Column="1" FontSize="Title" Text="{Binding Gratification}" Placeholder="Gratification" />
+
+                <!--Calculate Net Salary-->
+                <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium" Command="{Binding CalculateNetSalary}" Text="Calculate net salary" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Net Salary" FontSize="Title"/>
+                <Label Grid.Row="3" Grid.Column="1" FontSize="Title"  Text="{Binding NetSalary}" />
+
+                <!-- Discount -->
+                <Label Grid.Row="4" Grid.Column="0" Text="Discount" FontSize="Title" VerticalOptions="CenterAndExpand"/>
+                <Entry Grid.Row="4" Grid.Column="1" FontSize="Title" Text="{Binding Discount}" Placeholder="Descuento" />
+
+                <!--Calculate Net Final Salary-->
+                <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium" Command="{Binding CalculateNetFinalSalary}" Text="Calculate Net Salary" />
+
+                <Label Grid.Row="6" Grid.Column="0" Text="Net Final Salary" FontSize="Title" />
+                <Label Grid.Row="6" Grid.Column="1" FontSize="Title"  Text="{Binding NetFinalSalary}" />
+
+                <!--Calculate Tax Salary-->
+                <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" FontSize="Medium" Command="{Binding CalculateTax}" Text="Calculate Tax" />
+
+                <Label Grid.Row="8" Grid.Column="0" Text="Tax" FontSize="Title" />
+                <Label Grid.Row="8" Grid.Column="1" FontSize="Title"  Text="{Binding Tax}" />
+                
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
